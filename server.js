@@ -26,6 +26,14 @@ app.route('/')
   })
 
 
+app.route('/:custom')
+
+  .get(function(req,res)
+  {
+   res.sendFile(__dirname + "/" + req.params.custom + ".html");
+  })
+
+
 
 app.listen(3000, function()
 {
