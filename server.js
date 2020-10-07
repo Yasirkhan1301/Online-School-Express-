@@ -5,7 +5,7 @@ const request = require("request")
 
 
 app.use(express.static("public"))
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 // app.get("/", function(request, response)
 // {
@@ -21,17 +21,26 @@ app.route('/')
 		console.log(email);
 
   })
-  .put(function (req, res) {
-    res.send('Update the book')
-  })
 
 
-app.route('/:custom')
 
-  .get(function(req,res)
-  {
-   res.sendFile(__dirname + "/" + req.params.custom + ".html");
-  })
+
+
+app.get('/:custom', function (req, res)
+{
+  res.sendFile(__dirname + "/" + req.params.custom + ".html");
+})
+
+
+ app.post('/search', function(req,res)
+{
+  console.log(req.body.searching);
+})
+app.post('/newsletter',function(req,res)
+{
+  console.log(req.body.email);
+})
+
 
 
 
